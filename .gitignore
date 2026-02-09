@@ -1,0 +1,65 @@
+# === Flutter / Dart ===
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+.packages
+.pub-cache/
+.pub/
+build/
+coverage/
+
+# === Environment files ===
+.env
+.env.*
+*.keystore
+key.properties
+
+# === IDEs ===
+.idea/
+.vscode/
+*.iml
+
+# === Android ===
+android/.gradle/
+android/captures/
+android/local.properties
+android/**/GeneratedPluginRegistrant.java
+
+# Signing / sensitive
+android/app/debug.keystore
+
+# === iOS / macOS ===
+ios/Pods/
+ios/.symlinks/
+ios/Flutter/ephemeral/
+ios/Flutter/Generated.xcconfig
+ios/Flutter/flutter_export_environment.sh
+ios/Runner/GeneratedPluginRegistrant.*
+
+macos/Pods/
+macos/Flutter/ephemeral/
+macos/Flutter/GeneratedPluginRegistrant.swift
+
+# === Web ===
+web/.dart_tool/
+web/build/
+
+# === Windows ===
+windows/.plugin_symlinks/
+windows/Flutter/ephemeral/
+windows/runner/generated_plugin_registrant.cc
+
+# === Linux ===
+linux/.plugin_symlinks/
+linux/Flutter/ephemeral/
+linux/flutter/generated_plugin_registrant.cc
+
+# === Logs & temp ===
+*.log
+*.tmp
+*.swp
+.DS_Store
+Thumbs.db
+
+# === Test artifacts ===
+test/.test_coverage.dart
