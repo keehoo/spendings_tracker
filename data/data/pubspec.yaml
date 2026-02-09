@@ -1,7 +1,8 @@
 name: data
 description: "A new Flutter package project."
 version: 0.0.1
-homepage:
+homepage: none
+publish_to: none
 
 environment:
   sdk: ^3.10.8
@@ -10,6 +11,10 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  hive_flutter: 1.1.0
+  domain:
+    path: ../../domain/domain # TODO: messed up the paths a lil bit.
+
 
 dev_dependencies:
   flutter_test:
