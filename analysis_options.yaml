@@ -7,6 +7,12 @@
 
 # The following line activates a set of recommended lints for Flutter apps,
 # packages, and plugins designed to encourage good coding practices.
+analyzer:
+  errors:
+    #added this due to some deprecated members in std lib (flutter)
+    # remove this ignore to see what triggers the issues.
+    # TODO: @Kubicki - remove this ignore and fix the issue
+    deprecated_member_use: ignore
 include: package:flutter_lints/flutter.yaml
 
 linter:

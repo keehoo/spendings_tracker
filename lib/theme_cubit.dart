@@ -1,4 +1,5 @@
 import 'package:equatable/equatable.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -24,7 +25,10 @@ class ThemeCubit extends Cubit<ThemeState> {
         ThemeMode.values.firstWhere((element) => element.name == themeName),
       });
     } else {
-      print("Did not find previously saved theme");
+      // TODO: @kubicki - add proper logger
+      if (kDebugMode) {
+        print("Did not find previously saved theme");
+      }
     }
   }
 }
