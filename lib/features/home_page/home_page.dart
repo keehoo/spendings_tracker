@@ -116,73 +116,75 @@ class HomePage extends StatelessWidget {
         TransactionCategory? transactionCategory;
         DateTime dateTime = DateTime.now();
 
-        return Padding(
-          padding: EdgeInsets.only(
-            left: 16,
-            right: 16,
-            top: 16,
-            bottom: MediaQuery.of(c).viewInsets.bottom + 16,
-          ),
-          child: SingleChildScrollView(
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                const Text("Add transaction"),
+        return SafeArea(
+          child: Padding(
+            padding: EdgeInsets.only(
+              left: 16,
+              right: 16,
+              top: 16,
+              bottom: MediaQuery.of(c).viewInsets.bottom + 16,
+            ),
+            child: SingleChildScrollView(
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  const Text("Add transaction"),
 
-                const SizedBox(height: 16),
+                  const SizedBox(height: 16),
 
-                TextField(
-                  controller: controller,
-                  keyboardType: const TextInputType.numberWithOptions(
-                    decimal: true,
+                  TextField(
+                    controller: controller,
+                    keyboardType: const TextInputType.numberWithOptions(
+                      decimal: true,
+                    ),
+                    decoration: const InputDecoration(
+                      labelText: "Amount spent",
+                      border: OutlineInputBorder(),
+                    ),
                   ),
-                  decoration: const InputDecoration(
-                    labelText: "Amount spent",
-                    border: OutlineInputBorder(),
+
+                  const SizedBox(height: 16),
+                  FilledButton(
+                    onPressed: () async {
+                      final DateTime? date = await showDatePicker(
+                        context: context,
+                        firstDate: DateTime(1990),
+                        lastDate: dateTime,
+                        initialDate: dateTime,
+                      );
+                      dateTime = date ?? DateTime.now();
+                    },
+                    child: Text("set date"),
                   ),
-                ),
+                  CategorySelector(
+                    onCategorySelected: (TransactionCategory? cat) {
+                      transactionCategory = cat;
+                    },
+                  ),
 
-                const SizedBox(height: 16),
-                FilledButton(
-                  onPressed: () async {
-                    final DateTime? date = await showDatePicker(
-                      context: context,
-                      firstDate: DateTime(1990),
-                      lastDate: dateTime,
-                      initialDate: dateTime,
-                    );
-                    dateTime = date ?? DateTime.now();
-                  },
-                  child: Text("set date"),
-                ),
-                CategorySelector(
-                  onCategorySelected: (TransactionCategory? cat) {
-                    transactionCategory = cat;
-                  },
-                ),
+                  const SizedBox(height: 16),
 
-                const SizedBox(height: 16),
+                  FilledButton(
+                    onPressed: () {
+                      if (double.tryParse(controller.text) == null) {
+                        return;
+                      }
 
-                FilledButton(
-                  onPressed: () {
-                    if (double.tryParse(controller.text) == null) {
-                      return;
-                    }
+                      final transaction = Transaction(
+                        amount: controller.text,
+                        category:
+                            transactionCategory ??
+                            TransactionCategory.none, // pick default
+                        date: dateTime,
+                        description: "null",
+                      );
 
-                    final transaction = Transaction(
-                      amount: controller.text,
-                      category:
-                          transactionCategory ??
-                          TransactionCategory.none, // pick default
-                      date: dateTime,
-                      description: "null",
-                    );
-
-                    Navigator.of(c).pop(transaction);
-                  },
-                  child: const Text("Add transaction"),
-                ),
-              ],
+                      Navigator.of(c).pop(transaction);
+                    },
+                    child: const Text("Add transaction"),
+                  ),
+                ],
+              ),
             ),
           ),
         );
@@ -204,73 +206,75 @@ class HomePage extends StatelessWidget {
         IncomeCategory? incomeCategory;
         DateTime dateTime = DateTime.now();
 
-        return Padding(
-          padding: EdgeInsets.only(
-            left: 16,
-            right: 16,
-            top: 16,
-            bottom: MediaQuery.of(c).viewInsets.bottom + 16,
-          ),
-          child: SingleChildScrollView(
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                const Text("Add Earning"),
+        return SafeArea(
+          child: Padding(
+            padding: EdgeInsets.only(
+              left: 16,
+              right: 16,
+              top: 16,
+              bottom: MediaQuery.of(c).viewInsets.bottom + 16,
+            ),
+            child: SingleChildScrollView(
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  const Text("Add Earning"),
 
-                const SizedBox(height: 16),
+                  const SizedBox(height: 16),
 
-                TextField(
-                  controller: controller,
-                  keyboardType: const TextInputType.numberWithOptions(
-                    decimal: true,
+                  TextField(
+                    controller: controller,
+                    keyboardType: const TextInputType.numberWithOptions(
+                      decimal: true,
+                    ),
+                    decoration: const InputDecoration(
+                      labelText: "Amount earned",
+                      border: OutlineInputBorder(),
+                    ),
                   ),
-                  decoration: const InputDecoration(
-                    labelText: "Amount earned",
-                    border: OutlineInputBorder(),
+
+                  const SizedBox(height: 16),
+                  FilledButton(
+                    onPressed: () async {
+                      final DateTime? date = await showDatePicker(
+                        context: context,
+                        firstDate: DateTime(1990),
+                        lastDate: dateTime,
+                        initialDate: dateTime,
+                      );
+                      dateTime = date ?? DateTime.now();
+                    },
+                    child: Text("set date"),
                   ),
-                ),
+                  IncomeCategorySelector(
+                    onCategorySelected: (IncomeCategory? cat) {
+                      incomeCategory = cat;
+                    },
+                  ),
 
-                const SizedBox(height: 16),
-                FilledButton(
-                  onPressed: () async {
-                    final DateTime? date = await showDatePicker(
-                      context: context,
-                      firstDate: DateTime(1990),
-                      lastDate: dateTime,
-                      initialDate: dateTime,
-                    );
-                    dateTime = date ?? DateTime.now();
-                  },
-                  child: Text("set date"),
-                ),
-                IncomeCategorySelector(
-                  onCategorySelected: (IncomeCategory? cat) {
-                    incomeCategory = cat;
-                  },
-                ),
+                  const SizedBox(height: 16),
 
-                const SizedBox(height: 16),
+                  FilledButton(
+                    onPressed: () {
+                      if (double.tryParse(controller.text) == null) {
+                        return;
+                      }
 
-                FilledButton(
-                  onPressed: () {
-                    if (double.tryParse(controller.text) == null) {
-                      return;
-                    }
+                      final income = Income(
+                        amount: controller.text,
+                        category:
+                            incomeCategory ??
+                            IncomeCategory.other, // pick default
+                        date: dateTime,
+                        description: "null",
+                      );
 
-                    final income = Income(
-                      amount: controller.text,
-                      category:
-                          incomeCategory ??
-                          IncomeCategory.other, // pick default
-                      date: dateTime,
-                      description: "null",
-                    );
-
-                    Navigator.of(c).pop(income);
-                  },
-                  child: const Text("Add earning"),
-                ),
-              ],
+                      Navigator.of(c).pop(income);
+                    },
+                    child: const Text("Add earning"),
+                  ),
+                ],
+              ),
             ),
           ),
         );
