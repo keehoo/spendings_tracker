@@ -1,4 +1,3 @@
-
 import 'package:data/data.dart';
 import 'package:data/models/income_category_entity.dart';
 

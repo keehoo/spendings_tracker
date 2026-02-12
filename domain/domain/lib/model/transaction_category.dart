@@ -1,3 +1,1 @@
-enum TransactionCategory {
-  grocery, bill, treats, electronics, none
-}
+enum TransactionCategory { grocery, bill, treats, electronics, none }

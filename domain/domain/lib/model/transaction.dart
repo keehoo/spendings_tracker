@@ -3,7 +3,7 @@ import 'package:domain/model/transaction_category.dart';
 
 typedef Spending = Transaction;
 
-class Transaction implements FinancialOperation{
+class Transaction implements FinancialOperation {
   @override
   final String amount;
   final TransactionCategory category;

@@ -10,6 +10,7 @@ class SaveTransaction {
     return transactionsRepository.addTransaction(transaction);
   }
 }
+
 class GetTransactions {
   final TransactionsRepository repository;
 

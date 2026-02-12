@@ -1,7 +1,7 @@
 import 'package:domain/model/financial_operation.dart';
+import 'package:domain/model/income.dart';
 import 'package:domain/model/income_category.dart';
 import 'package:domain/model/transaction.dart';
-import 'package:domain/model/income.dart';
 import 'package:domain/model/transaction_category.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -69,7 +69,7 @@ class HomePage extends StatelessWidget {
                       ),
                       ButtonSegment(value: ThemeMode.dark, label: Text("dark")),
                     ],
-                    selected: {themeState.themeMode ?? ThemeMode.system} ,
+                    selected: {themeState.themeMode ?? ThemeMode.system},
                   );
                 },
               ),
@@ -80,9 +80,7 @@ class HomePage extends StatelessWidget {
                   children: (state.transactions ?? []).map((transaction) {
                     return ListTile(
                       title: Text(
-                        "${transaction.amount} ${transaction is Spending
-                            ? "spent"
-                            : "earned"}  ",
+                        "${transaction.amount} ${transaction is Spending ? "spent" : "earned"}  ",
                       ),
                     );
                   }).toList(),
@@ -121,10 +119,7 @@ class HomePage extends StatelessWidget {
             left: 16,
             right: 16,
             top: 16,
-            bottom: MediaQuery
-                .of(c)
-                .viewInsets
-                .bottom + 16,
+            bottom: MediaQuery.of(c).viewInsets.bottom + 16,
           ),
           child: SingleChildScrollView(
             child: Column(
@@ -175,7 +170,7 @@ class HomePage extends StatelessWidget {
                     final transaction = Transaction(
                       amount: controller.text,
                       category:
-                      transactionCategory ??
+                          transactionCategory ??
                           TransactionCategory.none, // pick default
                       date: dateTime,
                       description: "null",
@@ -212,10 +207,7 @@ class HomePage extends StatelessWidget {
             left: 16,
             right: 16,
             top: 16,
-            bottom: MediaQuery
-                .of(c)
-                .viewInsets
-                .bottom + 16,
+            bottom: MediaQuery.of(c).viewInsets.bottom + 16,
           ),
           child: SingleChildScrollView(
             child: Column(
@@ -266,7 +258,7 @@ class HomePage extends StatelessWidget {
                     final income = Income(
                       amount: controller.text,
                       category:
-                      incomeCategory ??
+                          incomeCategory ??
                           IncomeCategory.other, // pick default
                       date: dateTime,
                       description: "null",
@@ -289,11 +281,13 @@ class HomePage extends StatelessWidget {
   }
 
   // TODO: @kubicki - move to cubit
-  Widget _getSpendingsSummary(BuildContext context,
-      List<FinancialOperation>? transactions,) {
+  Widget _getSpendingsSummary(
+    BuildContext context,
+    List<FinancialOperation>? transactions,
+  ) {
     final sum = (transactions ?? []).whereType<Spending>().fold<double>(
       0.0,
-          (total, e) => total + (double.tryParse(e.amount) ?? 0.0),
+      (total, e) => total + (double.tryParse(e.amount) ?? 0.0),
     );
     return Padding(
       padding: const EdgeInsets.all(8.0),
@@ -302,11 +296,13 @@ class HomePage extends StatelessWidget {
   }
 
   // TODO: @kubicki - move to cubit
-  Widget _getEarningsSummary(BuildContext context,
-      List<FinancialOperation>? transactions,) {
+  Widget _getEarningsSummary(
+    BuildContext context,
+    List<FinancialOperation>? transactions,
+  ) {
     final sum = (transactions ?? []).whereType<Income>().fold<double>(
       0.0,
-          (total, e) => total + (double.tryParse(e.amount) ?? 0.0),
+      (total, e) => total + (double.tryParse(e.amount) ?? 0.0),
     );
     return Padding(
       padding: const EdgeInsets.all(8.0),
@@ -314,20 +310,22 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  Widget _getBalanceSummary(BuildContext context,
-      List<FinancialOperation>? transactions,) {
+  Widget _getBalanceSummary(
+    BuildContext context,
+    List<FinancialOperation>? transactions,
+  ) {
     final double earnings = (transactions ?? [])
         .whereType<Income>()
         .fold<double>(
-      0.0,
+          0.0,
           (total, e) => total + (double.tryParse(e.amount) ?? 0.0),
-    );
+        );
     final double spendings = (transactions ?? [])
         .whereType<Spending>()
         .fold<double>(
-      0.0,
+          0.0,
           (total, e) => total + (double.tryParse(e.amount) ?? 0.0),
-    );
+        );
 
     final result = earnings - spendings;
 

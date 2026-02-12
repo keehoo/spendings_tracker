@@ -7,8 +7,12 @@ abstract class TransactionsRepository {
   TransactionsRepository({required this.dataSource});
 
   Future<void> addTransaction(Transaction transaction);
+
   Future<List<Transaction>> getTransactions();
+
   Future<void> deleteTransaction(int index);
+
   Future<void> updateTransaction(int index, Transaction transaction);
+
   Future<void> clearTransactions();
 }

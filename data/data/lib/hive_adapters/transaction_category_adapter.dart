@@ -1,7 +1,8 @@
 import 'package:data/models/transaction_category_entity.dart';
 import 'package:hive_flutter/adapters.dart';
 
-class TransactionCategoryEntityAdapter extends TypeAdapter<TransactionCategoryEntity> {
+class TransactionCategoryEntityAdapter
+    extends TypeAdapter<TransactionCategoryEntity> {
   @override
   final int typeId = 10;
 

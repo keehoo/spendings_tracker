@@ -30,9 +30,7 @@ void main() {
         },
         build: () => ThemeCubit(),
         act: (cubit) => cubit.changeMode({ThemeMode.light}),
-        expect: () => [
-          ThemeState(themeMode: ThemeMode.light),
-        ],
+        expect: () => [ThemeState(themeMode: ThemeMode.light)],
         verify: (_) async {
           final sp = await SharedPreferences.getInstance();
           expect(sp.getString('theme'), 'light');
@@ -46,9 +44,7 @@ void main() {
         },
         build: () => ThemeCubit(),
         act: (cubit) => cubit.changeMode({ThemeMode.dark}),
-        expect: () => [
-          ThemeState(themeMode: ThemeMode.dark),
-        ],
+        expect: () => [ThemeState(themeMode: ThemeMode.dark)],
         verify: (_) async {
           final sp = await SharedPreferences.getInstance();
           expect(sp.getString('theme'), 'dark');
@@ -62,9 +58,7 @@ void main() {
         },
         build: () => ThemeCubit(),
         act: (cubit) => cubit.changeMode({ThemeMode.system}),
-        expect: () => [
-          ThemeState(themeMode: ThemeMode.system),
-        ],
+        expect: () => [ThemeState(themeMode: ThemeMode.system)],
         verify: (_) async {
           final sp = await SharedPreferences.getInstance();
           expect(sp.getString('theme'), 'system');
@@ -78,9 +72,7 @@ void main() {
         },
         build: () => ThemeCubit(),
         act: (cubit) => cubit.changeMode({}),
-        expect: () => [
-          ThemeState(themeMode: null),
-        ],
+        expect: () => [ThemeState(themeMode: null)],
         verify: (_) async {
           final sp = await SharedPreferences.getInstance();
           expect(sp.getString('theme'), '');
@@ -116,9 +108,7 @@ void main() {
         },
         build: () => ThemeCubit(),
         act: (cubit) => cubit.init(),
-        expect: () => [
-          ThemeState(themeMode: ThemeMode.light),
-        ],
+        expect: () => [ThemeState(themeMode: ThemeMode.light)],
       );
 
       blocTest<ThemeCubit, ThemeState>(
@@ -128,9 +118,7 @@ void main() {
         },
         build: () => ThemeCubit(),
         act: (cubit) => cubit.init(),
-        expect: () => [
-          ThemeState(themeMode: ThemeMode.dark),
-        ],
+        expect: () => [ThemeState(themeMode: ThemeMode.dark)],
       );
 
       blocTest<ThemeCubit, ThemeState>(
@@ -140,9 +128,7 @@ void main() {
         },
         build: () => ThemeCubit(),
         act: (cubit) => cubit.init(),
-        expect: () => [
-          ThemeState(themeMode: ThemeMode.system),
-        ],
+        expect: () => [ThemeState(themeMode: ThemeMode.system)],
       );
 
       blocTest<ThemeCubit, ThemeState>(

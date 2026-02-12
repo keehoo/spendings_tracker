@@ -4,16 +4,12 @@ import 'package:hive_flutter/hive_flutter.dart';
 enum TransactionCategoryEntity {
   @HiveField(0)
   grocery,
-
   @HiveField(1)
   bill,
-
   @HiveField(2)
   treats,
-
   @HiveField(3)
   electronics,
-
   @HiveField(4)
   none,
 }

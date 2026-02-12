@@ -1,6 +1,6 @@
+import 'package:domain/data_sources/local_storage_data_source.dart';
 import 'package:domain/model/income.dart';
 import 'package:domain/repositories/income_repository.dart';
-import 'package:domain/data_sources/local_storage_data_source.dart';
 
 class IncomeRepositoryImpl extends IncomeRepository {
   final LocalStorageDataSource dataSource;

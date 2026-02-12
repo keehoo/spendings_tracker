@@ -13,7 +13,10 @@ class LocalStorageDataSourceImpl extends LocalStorageDataSource {
   final Box<TransactionEntity> transactionBox;
   final Box<IncomeEntity> incomeBox;
 
-  LocalStorageDataSourceImpl({required this.transactionBox, required this.incomeBox});
+  LocalStorageDataSourceImpl({
+    required this.transactionBox,
+    required this.incomeBox,
+  });
 
   @override
   Future<void> saveTransaction(Transaction transaction) async {
@@ -43,8 +46,6 @@ class LocalStorageDataSourceImpl extends LocalStorageDataSource {
   Future<void> clear() async {
     await transactionBox.clear();
   }
-
-
 
   // ---------- Income CRUD ----------
   @override

@@ -1,3 +1,1 @@
-enum IncomeCategory {
-  salary, stocks, dividends, other
-}
+enum IncomeCategory { salary, stocks, dividends, other }

@@ -5,16 +5,15 @@ import 'package:data/hive_adapters/income_category_adapter.dart';
 import 'package:data/hive_adapters/transaction_adapter.dart';
 import 'package:data/hive_adapters/transaction_category_adapter.dart';
 import 'package:data/models/income_entity.dart';
+import 'package:data/models/transaction_entity.dart';
 import 'package:data/repositories/income_repository_impl.dart';
+import 'package:data/repositories/transactions_repository_impl.dart';
 import 'package:domain/data_sources/local_storage_data_source.dart';
 import 'package:domain/repositories/income_repository.dart';
 import 'package:domain/repositories/transactions_repository.dart';
 import 'package:domain/usecases/income_usecases.dart';
 import 'package:domain/usecases/save_transaction.dart';
 import 'package:get_it/get_it.dart';
-
-import 'package:data/models/transaction_entity.dart';
-import 'package:data/repositories/transactions_repository_impl.dart';
 
 final sl = GetIt.instance;
 

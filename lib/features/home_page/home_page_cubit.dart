@@ -38,17 +38,16 @@ class HomePageCubit extends Cubit<HomePageState> {
     if (state.selectedFilteringTab?.contains(FilteringOption.all) ?? false) {
       operations.addAll(transaction);
       operations.addAll(incomes);
-    }
-
-    else if (state.selectedFilteringTab?.contains(FilteringOption.spendings) ?? false) {
+    } else if (state.selectedFilteringTab?.contains(
+          FilteringOption.spendings,
+        ) ??
+        false) {
       operations.addAll(transaction);
-    }
-    else if (state.selectedFilteringTab?.contains(FilteringOption.earnings) ?? false) {
+    } else if (state.selectedFilteringTab?.contains(FilteringOption.earnings) ??
+        false) {
       operations.addAll(incomes);
-    }
-
-    else {
-     // no op ?
+    } else {
+      // no op ?
       // TODO: decide what to do when no filtering options is selected
     }
 
@@ -64,6 +63,4 @@ class HomePageCubit extends Cubit<HomePageState> {
     emit(state.copyWith(selectedFilteringTab: value));
     getAllTransactions();
   }
-
-
 }

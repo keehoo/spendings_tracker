@@ -1,4 +1,4 @@
-abstract  class FinancialOperation {
+abstract class FinancialOperation {
   final String amount;
   final String description;
 

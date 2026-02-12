@@ -8,15 +8,13 @@ import 'package:spendings_tracker/widgets/category_selector.dart';
 
 void main() {
   group('CategorySelector Widget Tests', () {
-    testWidgets('renders all transaction categories', (WidgetTester tester) async {
+    testWidgets('renders all transaction categories', (
+      WidgetTester tester,
+    ) async {
       // Arrange
       await tester.pumpWidget(
         MaterialApp(
-          home: Scaffold(
-            body: CategorySelector(
-              onCategorySelected: (_) {},
-            ),
-          ),
+          home: Scaffold(body: CategorySelector(onCategorySelected: (_) {})),
         ),
       );
 
@@ -28,15 +26,13 @@ void main() {
       expect(find.text('none'), findsOneWidget);
     });
 
-    testWidgets('renders correct number of RadioListTile widgets', (WidgetTester tester) async {
+    testWidgets('renders correct number of RadioListTile widgets', (
+      WidgetTester tester,
+    ) async {
       // Arrange
       await tester.pumpWidget(
         MaterialApp(
-          home: Scaffold(
-            body: CategorySelector(
-              onCategorySelected: (_) {},
-            ),
-          ),
+          home: Scaffold(body: CategorySelector(onCategorySelected: (_) {})),
         ),
       );
 
@@ -47,37 +43,34 @@ void main() {
       );
     });
 
-    testWidgets('initially no category is selected', (WidgetTester tester) async {
+    testWidgets('initially no category is selected', (
+      WidgetTester tester,
+    ) async {
       // Arrange
       await tester.pumpWidget(
         MaterialApp(
-          home: Scaffold(
-            body: CategorySelector(
-              onCategorySelected: (_) {},
-            ),
-          ),
+          home: Scaffold(body: CategorySelector(onCategorySelected: (_) {})),
         ),
       );
 
       // Assert - find all radio buttons and verify none are selected
-      final radioButtons = tester.widgetList<RadioListTile<TransactionCategory>>(
-        find.byType(RadioListTile<TransactionCategory>),
-      );
+      final radioButtons = tester
+          .widgetList<RadioListTile<TransactionCategory>>(
+            find.byType(RadioListTile<TransactionCategory>),
+          );
 
       for (final radio in radioButtons) {
         expect(radio.groupValue, isNull);
       }
     });
 
-    testWidgets('selecting a category updates the UI', (WidgetTester tester) async {
+    testWidgets('selecting a category updates the UI', (
+      WidgetTester tester,
+    ) async {
       // Arrange
       await tester.pumpWidget(
         MaterialApp(
-          home: Scaffold(
-            body: CategorySelector(
-              onCategorySelected: (_) {},
-            ),
-          ),
+          home: Scaffold(body: CategorySelector(onCategorySelected: (_) {})),
         ),
       );
 
@@ -95,7 +88,9 @@ void main() {
       expect(groceryRadio.groupValue, TransactionCategory.grocery);
     });
 
-    testWidgets('selecting a category triggers callback with correct value', (WidgetTester tester) async {
+    testWidgets('selecting a category triggers callback with correct value', (
+      WidgetTester tester,
+    ) async {
       // Arrange
       TransactionCategory? selectedCategory;
 
@@ -119,7 +114,9 @@ void main() {
       expect(selectedCategory, TransactionCategory.bill);
     });
 
-    testWidgets('selecting multiple categories in sequence updates selection', (WidgetTester tester) async {
+    testWidgets('selecting multiple categories in sequence updates selection', (
+      WidgetTester tester,
+    ) async {
       // Arrange
       TransactionCategory? selectedCategory;
 
@@ -151,15 +148,13 @@ void main() {
       expect(selectedCategory, TransactionCategory.electronics);
     });
 
-    testWidgets('only one category can be selected at a time', (WidgetTester tester) async {
+    testWidgets('only one category can be selected at a time', (
+      WidgetTester tester,
+    ) async {
       // Arrange
       await tester.pumpWidget(
         MaterialApp(
-          home: Scaffold(
-            body: CategorySelector(
-              onCategorySelected: (_) {},
-            ),
-          ),
+          home: Scaffold(body: CategorySelector(onCategorySelected: (_) {})),
         ),
       );
 
@@ -172,9 +167,10 @@ void main() {
       await tester.pumpAndSettle();
 
       // Assert - verify only Bill is selected
-      final radioButtons = tester.widgetList<RadioListTile<TransactionCategory>>(
-        find.byType(RadioListTile<TransactionCategory>),
-      );
+      final radioButtons = tester
+          .widgetList<RadioListTile<TransactionCategory>>(
+            find.byType(RadioListTile<TransactionCategory>),
+          );
 
       int selectedCount = 0;
       TransactionCategory? selected;
@@ -190,7 +186,9 @@ void main() {
       expect(selected, TransactionCategory.bill);
     });
 
-    testWidgets('callback is called every time a category is selected', (WidgetTester tester) async {
+    testWidgets('callback is called every time a category is selected', (
+      WidgetTester tester,
+    ) async {
       // Arrange
       int callbackCount = 0;
       final List<TransactionCategory?> selectedCategories = [];
@@ -255,7 +253,9 @@ void main() {
       expect(selectedCategories.toSet(), TransactionCategory.values.toSet());
     });
 
-    testWidgets('widget rebuilds correctly when parent rebuilds', (WidgetTester tester) async {
+    testWidgets('widget rebuilds correctly when parent rebuilds', (
+      WidgetTester tester,
+    ) async {
       // Arrange
       TransactionCategory? selectedCategory;
 
@@ -293,23 +293,22 @@ void main() {
       await tester.pumpAndSettle();
 
       // Assert - selection should be reset with new widget instance
-      final radioButtons = tester.widgetList<RadioListTile<TransactionCategory>>(
-        find.byType(RadioListTile<TransactionCategory>),
-      );
+      final radioButtons = tester
+          .widgetList<RadioListTile<TransactionCategory>>(
+            find.byType(RadioListTile<TransactionCategory>),
+          );
 
       for (final radio in radioButtons) {
         expect(radio.groupValue, isNull);
       }
     });
-    testWidgets('categories are displayed in a Column', (WidgetTester tester) async {
+    testWidgets('categories are displayed in a Column', (
+      WidgetTester tester,
+    ) async {
       // Arrange
       await tester.pumpWidget(
         MaterialApp(
-          home: Scaffold(
-            body: CategorySelector(
-              onCategorySelected: (_) {},
-            ),
-          ),
+          home: Scaffold(body: CategorySelector(onCategorySelected: (_) {})),
         ),
       );
 
@@ -346,18 +345,19 @@ void main() {
 
       // Assert - all taps should register the same category
       expect(selectedCategories.length, 3);
-      expect(selectedCategories.every((cat) => cat == TransactionCategory.grocery), isTrue);
+      expect(
+        selectedCategories.every((cat) => cat == TransactionCategory.grocery),
+        isTrue,
+      );
     });
 
-    testWidgets('selecting same category twice keeps it selected', (WidgetTester tester) async {
+    testWidgets('selecting same category twice keeps it selected', (
+      WidgetTester tester,
+    ) async {
       // Arrange
       await tester.pumpWidget(
         MaterialApp(
-          home: Scaffold(
-            body: CategorySelector(
-              onCategorySelected: (_) {},
-            ),
-          ),
+          home: Scaffold(body: CategorySelector(onCategorySelected: (_) {})),
         ),
       );
 

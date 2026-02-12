@@ -2,16 +2,12 @@ import 'package:domain/model/income_category.dart';
 import 'package:flutter/material.dart';
 
 class IncomeCategorySelector extends StatefulWidget {
-  const IncomeCategorySelector({
-    super.key,
-    required this.onCategorySelected,
-  });
+  const IncomeCategorySelector({super.key, required this.onCategorySelected});
 
   final void Function(IncomeCategory? cat) onCategorySelected;
 
   @override
-  State<IncomeCategorySelector> createState() =>
-      _IncomeCategorySelectorState();
+  State<IncomeCategorySelector> createState() => _IncomeCategorySelectorState();
 }
 
 class _IncomeCategorySelectorState extends State<IncomeCategorySelector> {
