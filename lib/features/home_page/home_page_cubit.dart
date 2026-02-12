@@ -3,6 +3,7 @@ import 'package:domain/model/income.dart';
 import 'package:domain/model/transaction.dart';
 import 'package:domain/usecases/income_usecases.dart';
 import 'package:domain/usecases/save_transaction.dart';
+import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 part 'home_page_state.dart';

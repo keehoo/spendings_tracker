@@ -1,10 +1,10 @@
 part of 'home_page_cubit.dart';
 
-class HomePageState {
+class HomePageState extends Equatable {
   final List<FinancialOperation>? transactions;
   final Set<FilteringOption>? selectedFilteringTab;
 
-  HomePageState({this.transactions, this.selectedFilteringTab});
+  const HomePageState({this.transactions, this.selectedFilteringTab});
 
   HomePageState copyWith({
     List<FinancialOperation>? transactions,
@@ -15,9 +15,9 @@ class HomePageState {
       selectedFilteringTab: selectedFilteringTab ?? this.selectedFilteringTab,
     );
   }
+
+  @override
+  List<Object?> get props => throw [transactions, selectedFilteringTab];
 }
 
-
-enum FilteringOption {
-  spendings, earnings, all
-}
+enum FilteringOption { spendings, earnings, all }
