@@ -3,7 +3,9 @@
 Spending Tracker Application - Track your spendings for better bugdet management
 
 ## Architecture
-### I tried to follow Clean Architecture by Uncle Bob, especially in terms of testability and separation of concerns. Lib (presentation layer), data (data layer) and domain (domain layer) are in seperate modules. 
+### I tried to follow Clean Architecture by Uncle Bob, especially in terms of testability and separation of concerns. Lib (presentation layer), data (data layer) and domain (domain layer) are in seperate modules.
+## I also tried to use as much of standard library as possible, the fancy tools that are used with conjuction with build_runner are often to little or to much maintained, causing it to be either deprecated or having constant breaking changes. 
+
 
 ## Tradeoffs:
 ### 

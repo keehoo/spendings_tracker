@@ -23,82 +23,84 @@ class HomePage extends StatelessWidget {
         // TODO: implement listener
       },
       builder: (context, state) {
-        return Scaffold(
-          appBar: AppBar(
-            actions: [
-              _getSpendingsSummary(context, state.transactions),
-              _getEarningsSummary(context, state.transactions),
-              _getBalanceSummary(context, state.transactions),
-            ],
-            title: Text('Home Page'),
-          ),
+        return SafeArea(
+          child: Scaffold(
+            appBar: AppBar(
+              actions: [
+                _getSpendingsSummary(context, state.transactions),
+                _getEarningsSummary(context, state.transactions),
+                _getBalanceSummary(context, state.transactions),
+              ],
+              title: Text('Home Page'),
+            ),
 
-          body: Column(
-            children: [
-              SegmentedButton(
-                onSelectionChanged: (Set<FilteringOption> value) {
-                  context.read<HomePageCubit>().changeTab(value);
-                },
-                segments: [
-                  ButtonSegment(
-                    value: FilteringOption.earnings,
-                    label: Text("earnings"),
-                  ),
-                  ButtonSegment(
-                    value: FilteringOption.spendings,
-                    label: Text("spendings"),
-                  ),
-                  ButtonSegment(value: FilteringOption.all, label: Text("all")),
-                ],
-                selected: state.selectedFilteringTab ?? {FilteringOption.all},
-              ),
-              BlocBuilder<ThemeCubit, ThemeState>(
-                builder: (context, themeState) {
-                  return SegmentedButton(
-                    onSelectionChanged: (Set<ThemeMode> value) {
-                      context.read<ThemeCubit>().changeMode(value);
-                    },
-                    segments: [
-                      ButtonSegment(
-                        value: ThemeMode.system,
-                        label: Text("system"),
-                      ),
-                      ButtonSegment(
-                        value: ThemeMode.light,
-                        label: Text("light"),
-                      ),
-                      ButtonSegment(value: ThemeMode.dark, label: Text("dark")),
-                    ],
-                    selected: {themeState.themeMode ?? ThemeMode.system},
-                  );
-                },
-              ),
-              Expanded(
-                // TODO: @kubicki - should use ListView.builder
-                child: ListView(
-                  shrinkWrap: true,
-                  children: (state.transactions ?? []).map((transaction) {
-                    return ListTile(
-                      title: Text(
-                        "${transaction.amount} ${transaction is Spending ? "spent" : "earned"}  ",
-                      ),
-                    );
-                  }).toList(),
+            body: Column(
+              children: [
+                SegmentedButton(
+                  onSelectionChanged: (Set<FilteringOption> value) {
+                    context.read<HomePageCubit>().changeTab(value);
+                  },
+                  segments: [
+                    ButtonSegment(
+                      value: FilteringOption.earnings,
+                      label: Text("earnings"),
+                    ),
+                    ButtonSegment(
+                      value: FilteringOption.spendings,
+                      label: Text("spendings"),
+                    ),
+                    ButtonSegment(value: FilteringOption.all, label: Text("all")),
+                  ],
+                  selected: state.selectedFilteringTab ?? {FilteringOption.all},
                 ),
-              ),
-              Wrap(
-                children: [
-                  ListTile(
-                    onTap: () => _addTransaction(context),
-                    title: Text("add spending"),
+                BlocBuilder<ThemeCubit, ThemeState>(
+                  builder: (context, themeState) {
+                    return SegmentedButton(
+                      onSelectionChanged: (Set<ThemeMode> value) {
+                        context.read<ThemeCubit>().changeMode(value);
+                      },
+                      segments: [
+                        ButtonSegment(
+                          value: ThemeMode.system,
+                          label: Text("system"),
+                        ),
+                        ButtonSegment(
+                          value: ThemeMode.light,
+                          label: Text("light"),
+                        ),
+                        ButtonSegment(value: ThemeMode.dark, label: Text("dark")),
+                      ],
+                      selected: {themeState.themeMode ?? ThemeMode.system},
+                    );
+                  },
+                ),
+                Expanded(
+                  // TODO: @kubicki - should use ListView.builder
+                  child: ListView(
+                    shrinkWrap: true,
+                    children: (state.transactions ?? []).map((transaction) {
+                      return ListTile(
+                        title: Text(
+                          "${transaction.amount} ${transaction is Spending ? "spent" : "earned"}  ",
+                        ),
+                      );
+                    }).toList(),
                   ),
-                  ListTile(
-                    onTap: () => _addIncome(context),
-                    title: Text("add income"),
-                  ),
-                ],
-              ),
-            ],
+                ),
+                Wrap(
+                  children: [
+                    ListTile(
+                      onTap: () => _addTransaction(context),
+                      title: Text("add spending"),
+                    ),
+                    ListTile(
+                      onTap: () => _addIncome(context),
+                      title: Text("add income"),
+                    ),
+                  ],
+                ),
+              ],
+            ),
           ),
         );
       },
