@@ -108,7 +108,10 @@ class HomePage extends StatelessWidget {
   }
 
   Future<void> _addTransaction(BuildContext context) async {
-    final controller = TextEditingController();
+
+    // Keeping those here is hacky, should create a widget that would handle its own state
+    // TODO: @kubicki - create a widget to handle operation adding
+    final controller = TextEditingController(); 
     TransactionCategory? transactionCategory;
     DateTime dateTime = DateTime.now();
     final transaction = await showModalBottomSheet<Transaction>(
