@@ -6,8 +6,8 @@ class SaveTransaction {
 
   SaveTransaction(this.transactionsRepository);
 
-  void call(Transaction transaction) {
-    transactionsRepository.addTransaction(transaction);
+  Future<void> call(Transaction transaction) async {
+    return transactionsRepository.addTransaction(transaction);
   }
 }
 class GetTransactions {

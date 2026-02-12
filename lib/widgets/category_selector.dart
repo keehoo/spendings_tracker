@@ -21,7 +21,9 @@ class _CategorySelectorState extends State<CategorySelector> {
           title: Text(_label(category)),
           value: category,
           // TODO: @kubicki - deal with deprecations
+          // ignore: deprecated_member_use
           groupValue: selectedCategory,
+          // ignore: deprecated_member_use
           onChanged: (value) {
             setState(() {
               selectedCategory = value;

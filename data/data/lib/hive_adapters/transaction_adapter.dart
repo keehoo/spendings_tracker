@@ -4,7 +4,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 
 class TransactionEntityAdapter extends TypeAdapter<TransactionEntity> {
   @override
-  final int typeId = 11; // must match @HiveType in TransactionEntity
+  final int typeId = 11;
 
   @override
   TransactionEntity read(BinaryReader reader) {

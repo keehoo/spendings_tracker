@@ -1,17 +1,15 @@
 import 'package:domain/model/financial_operation.dart';
-import 'package:domain/model/transaction_category.dart';
+import 'package:domain/model/income_category.dart';
 
-typedef Spending = Transaction;
-
-class Transaction implements FinancialOperation{
+class Income implements FinancialOperation{
   @override
   final String amount;
-  final TransactionCategory category;
+  final IncomeCategory category;
   final DateTime date;
   @override
   final String description;
 
-  Transaction({
+  Income({
     required this.amount,
     required this.category,
     required this.date,

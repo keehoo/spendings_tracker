@@ -13,4 +13,7 @@ enum TransactionCategoryEntity {
 
   @HiveField(3)
   electronics,
+
+  @HiveField(4)
+  none,
 }
