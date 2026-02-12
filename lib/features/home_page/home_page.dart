@@ -108,13 +108,14 @@ class HomePage extends StatelessWidget {
   }
 
   Future<void> _addTransaction(BuildContext context) async {
+    final controller = TextEditingController();
+    TransactionCategory? transactionCategory;
+    DateTime dateTime = DateTime.now();
     final transaction = await showModalBottomSheet<Transaction>(
       context: context,
       isScrollControlled: true,
       builder: (c) {
-        final controller = TextEditingController();
-        TransactionCategory? transactionCategory;
-        DateTime dateTime = DateTime.now();
+
 
         return SafeArea(
           child: Padding(
@@ -198,13 +199,16 @@ class HomePage extends StatelessWidget {
   }
 
   Future<void> _addIncome(BuildContext context) async {
+
+    final controller = TextEditingController();
+    IncomeCategory? incomeCategory;
+    DateTime dateTime = DateTime.now();
+
     final income = await showModalBottomSheet<Income>(
       context: context,
       isScrollControlled: true,
       builder: (c) {
-        final controller = TextEditingController();
-        IncomeCategory? incomeCategory;
-        DateTime dateTime = DateTime.now();
+
 
         return SafeArea(
           child: Padding(

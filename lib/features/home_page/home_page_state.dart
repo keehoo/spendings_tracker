@@ -17,7 +17,7 @@ class HomePageState extends Equatable {
   }
 
   @override
-  List<Object?> get props => throw [transactions, selectedFilteringTab];
+  List<Object?> get props =>  [transactions, selectedFilteringTab];
 }
 
 enum FilteringOption { spendings, earnings, all }

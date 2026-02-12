@@ -49,6 +49,8 @@ class HomePageCubit extends Cubit<HomePageState> {
     } else {
       // no op ?
       // TODO: decide what to do when no filtering options is selected
+      operations.addAll(transaction);
+      operations.addAll(incomes);
     }
 
     emit(state.copyWith(transactions: operations));
